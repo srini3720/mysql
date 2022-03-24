@@ -12,9 +12,6 @@ sequelize
   .catch((err) => {
     console.error("Unable to connect to the database:", err);
   });
-// .finally(() => {
-//   sequelize.close();
-// });
 
 const Student = sequelize.define("student", {
   name: Sequelize.STRING,
@@ -35,7 +32,7 @@ async function createTable() {
       sequelize.close();
     });
 }
-createTable();
+// createTable();
 async function deleteTable() {
   const student = await Student.drop()
     .then(() => {
@@ -45,5 +42,56 @@ async function deleteTable() {
       sequelize.close();
     });
 }
-
 // deleteTable();
+
+//add Student data (INSERT)
+async function addStudent() {
+  const student = Student.build({
+    name: "Rajesh",
+    class: "10th",
+    roll_no: 1,
+    address: "Kathmandu",
+    phone: 9847897,
+    email: "rajesh@gmail.com",
+    description: "Good",
+  });
+  await student
+    .save()
+    .then(() => {
+      console.log("Student added");
+    })
+    .finally(() => {
+      sequelize.close();
+    });
+}
+// addStudent();
+
+//delete Student data (DELETE)
+async function deleteRow() {
+
+  let n = await Student.destroy({ where: { id: 1 } });
+  console.log(`number of deleted rows: ${n}`);
+
+  sequelize.close();
+}
+deleteRow();
+
+//update Student data (UPDATE)
+async function updateRow() {
+
+  let id = await Student.update(
+      { description: 'updated' },
+      { where: { id: 1 } });
+  sequelize.close();
+}
+
+updateRow();
+
+//findByPk(id)
+Student.findByPk(1).then((student)=>{
+  console.log("Student found");
+  console.log(`Id: ${student.id} name: ${student.name}`);
+}).finally(() => {
+  sequelize.close();
+})
+
