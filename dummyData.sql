@@ -4,7 +4,7 @@ USE COLLEGE_ADMIN;
 INSERT INTO SUBJECT VALUES   (default,'Engligh','ENG34'),
                              (default,'tamil','TAM34'),
                              (default,'physics','PHY34'),
-						     (default,'biology','BIO34'),
+						     (default,'maths','MAT34'),
                              (default,'chemistry','SCI34');
                              
 INSERT INTO DEPT VALUES  (default,'EEE','20EEE',3),
