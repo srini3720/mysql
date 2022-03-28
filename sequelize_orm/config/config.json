@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "rootadmin3720",
-    "database": "students_sequelize",
+    "database": "students_admin_sequalize",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
