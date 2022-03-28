@@ -13,4 +13,10 @@ SELECT * FROM MARKSHEET WHERE mark>=70 AND mark<=80;
 
 SELECT * FROM MARKSHEET ORDER BY mark DESC  lIMIT 1;
 
-SELECT AVG(mark) AS AVERAGE_MARKS FROM MARKSHEET WHERE class_id=1 AND subject_id=5
+SELECT AVG(mark) AS AVERAGE_MARKS FROM MARKSHEET WHERE class_id=1 AND subject_id=5;
+
+SELECT subject_id FROM subject WHERE name REGEXP 'maths';
+SELECT * FROM MARKSHEET  JOIN SUBJECT ON marksheet.subject_id=SUBJECT.subject_id;
+
+
+SELECT * FROM MARKSHEET  Right JOIN SUBJECT ON marksheet.subject_id=SUBJECT.subject_id WHERE SUBJECT.name LIKE 'maths' OR SUBJECT.name LIKE 'physics';
